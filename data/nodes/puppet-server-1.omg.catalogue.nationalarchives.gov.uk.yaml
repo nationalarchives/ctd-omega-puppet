@@ -1,0 +1,4 @@
+---
+classes:
+   - role::puppet_server
+   - role::puppet_agent
