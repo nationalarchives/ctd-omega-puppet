@@ -2,16 +2,32 @@
 class profile::base {
   include profile::epel
   include profile::ssh_server
+  include profile::gb_locale
 
+  # schedule security updates
   class { 'yum_cron':
     apply_updates => true,
     update_cmd    => security,
   }
 
-  package { 'htop':
-    ensure => 'installed',
+  # ensure that chrony service is running
+  service { 'chronyd':
+    ensure => running,
+    enable => true,
   }
-  package { 'curl':
+
+  # ensure ec2-user home remains private
+  file { '/home/ec2-user':
+    ensure  => directory,
+    replace => false,
+    owner   => 'ec2-user',
+    group   => 'ec2-user',
+    mode    => '0700',
+  }
+
+  # install additional packages
+  $additional_packages = ['curl', 'htop', 'screen']
+  package { $additional_packages:
     ensure => 'installed',
   }
 }
