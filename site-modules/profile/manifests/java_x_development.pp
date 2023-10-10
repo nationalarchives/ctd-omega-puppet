@@ -4,12 +4,20 @@ class profile::java_x_development {
   $intellij_idea_version = '2023.2.1'
   $eclipse_version = '2023-06'
 
+  file { "/opt/idea-IC-${intellij_idea_version}":
+    ensure  => directory,
+    replace => false,
+  }
+
   exec { 'install-intellij-ce':
-    command => "curl -L https://download.jetbrains.com/idea/ideaIC-${intellij_idea_version}.tar.gz | tar zxv -C /opt",
+    command => "curl -L https://download.jetbrains.com/idea/ideaIC-${intellij_idea_version}.tar.gz | tar zxv -C /opt/idea-IC-${intellij_idea_version} --strip-components=1",
     path    => '/usr/bin',
     user    => 'root',
-    creates => "/opt/idea-IC-${intellij_idea_version}",
-    require => Package['curl'],
+    creates => "/opt/idea-IC-${intellij_idea_version}/bin/idea.sh",
+    require => [
+      File["/opt/idea-IC-${intellij_idea_version}"],
+      Package['curl']
+    ],
   }
 
   file { '/opt/idea-IC':
@@ -18,7 +26,7 @@ class profile::java_x_development {
     replace => false,
     owner   => 'root',
     group   => 'root',
-    require => Exec['install-intellij-ce'],
+    require => File["/opt/idea-IC-${intellij_idea_version}"],
   }
 
   file { '/home/ec2-user/Desktop/IntelliJ.desktop':
