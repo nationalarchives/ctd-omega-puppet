@@ -3,7 +3,6 @@ forge 'https://forge.puppet.com'
 # Modules from the Puppet Forge
 mod 'puppet/yum', '7.1.0'
 mod 'puppetlabs/concat', '9.0.0'
-#mod 'puppetlabs/firewall', '6.0.0'
 mod 'puppetlabs/inifile', '6.1.0'
 mod 'puppetlabs/stdlib', '9.3.0'
 # mod 'puppetlabs/vcsrepo', '6.1.0'
