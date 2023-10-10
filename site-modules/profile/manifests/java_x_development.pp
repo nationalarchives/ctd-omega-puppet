@@ -51,12 +51,20 @@ GenericName=IntelliJ IDEA CE
     ],
   }
 
+  file { "/opt/eclipse-${eclipse_version}":
+    ensure  => directory,
+    replace => false,
+  }
+
   exec { 'install-eclipse':
-    command => "curl https://mirror.ibcp.fr/pub/eclipse/technology/epp/downloads/release/${eclipse_version}/R/eclipse-java-${eclipse_version}-R-linux-gtk-x86_64.tar.gz | tar zxv -C /opt && mv /opt/eclipse /opt/eclipse-${eclipse_version}",
+    command => "curl https://mirror.ibcp.fr/pub/eclipse/technology/epp/downloads/release/${eclipse_version}/R/eclipse-java-${eclipse_version}-R-linux-gtk-x86_64.tar.gz | tar zxv -C /opt/eclipse-${eclipse_version} --strip-components=1",
     path    => '/usr/bin',
     user    => 'root',
-    creates => "/opt/eclipse-${eclipse_version}",
-    require => Package['curl'],
+    creates => "/opt/eclipse-${eclipse_version}/eclipse",
+    require => [
+      File["/opt/eclipse-${eclipse_version}"],
+      Package['curl']
+    ],
   }
 
   file { '/opt/eclipse':
@@ -65,7 +73,7 @@ GenericName=IntelliJ IDEA CE
     replace => false,
     owner   => 'root',
     group   => 'root',
-    require => Exec['install-eclipse'],
+    require => File["/opt/eclipse-${eclipse_version}"],
   }
 
   file { '/home/ec2-user/Desktop/Eclipse.desktop':
