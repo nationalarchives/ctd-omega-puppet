@@ -3,12 +3,20 @@ class profile::xml_x_development {
 
   $oxygen_version = '25.1'
 
+  file { "/opt/oxygen-${oxygen_version}":
+    ensure  => directory,
+    replace => false,
+  }
+
   exec { 'install-oxygen':
-    command => "curl https://mirror.oxygenxml.com/InstData/Editor/All/oxygen.tar.gz | tar zxv -C /opt && mv /opt/oxygen /opt/oxygen-${oxygen_version}",
+    command => "curl https://mirror.oxygenxml.com/InstData/Editor/All/oxygen.tar.gz | tar zxv -C /opt/oxygen-${oxygen_version} --strip-components=1",
     path    => '/usr/bin',
     user    => 'root',
-    creates => "/opt/oxygen-${oxygen_version}",
-    require => Package['curl'],
+    creates => "/opt/oxygen-${oxygen_version}/oxygen.sh",
+    require => [
+      File["/opt/oxygen-${oxygen_version}"],
+      Package['curl']
+    ],
   }
 
   file { '/opt/oxygen':
@@ -17,7 +25,7 @@ class profile::xml_x_development {
     replace => false,
     owner   => 'root',
     group   => 'root',
-    require => Exec['install-oxygen'],
+    require => File["/opt/oxygen-${oxygen_version}"],
   }
 
   file { '/home/ec2-user/Desktop/Oxygen.desktop':
