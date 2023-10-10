@@ -1,0 +1,4 @@
+---
+classes:
+   - role::puppet_agent
+   - role::development_workstation
