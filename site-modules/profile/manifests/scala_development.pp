@@ -1,12 +1,20 @@
 class profile::scala_development {
   $sbt_version = '1.5.5'
 
+  file { "/opt/sbt-${sbt_version}":
+    ensure  => directory,
+    replace => false,
+  }
+
   exec { 'install-sbt':
-    command => "curl -L https://github.com/sbt/sbt/releases/download/v${sbt_version}/sbt-${sbt_version}.tgz | tar zxv -C /opt && mv /opt/sbt /opt/sbt-${sbt_version}",
+    command => "curl -L https://github.com/sbt/sbt/releases/download/v${sbt_version}/sbt-${sbt_version}.tgz | tar zxv -C /opt/sbt-${sbt_version} --strip-components=1",
     path    => '/usr/bin',
     user    => 'root',
-    creates => "/opt/sbt-${sbt_version}",
-    require => Package['curl'],
+    creates => "/opt/sbt-${sbt_version}/bin/sbt",
+    require => [
+      File["/opt/sbt-${sbt_version}"],
+      Package['curl']
+    ],
   }
 
   file { '/opt/sbt':
@@ -15,7 +23,7 @@ class profile::scala_development {
     replace => false,
     owner   => 'root',
     group   => 'root',
-    require => Exec['install-sbt'],
+    require => File["/opt/sbt-${sbt_version}"],
   }
 
   file { '/etc/profile.d/append-sbt-path.sh':
