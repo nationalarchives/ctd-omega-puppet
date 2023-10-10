@@ -2,3 +2,13 @@
 classes:
    - role::puppet_agent
    - role::development_workstation
+
+ssh_authorized_keys:
+  'robkwalpole@gmail.com':
+    user: 'ec2-user'
+    type: 'ssh-rsa'
+    key:  'AAAAB3NzaC1yc2EAAAADAQABAAACAQDeGsnsASPcis/IiqfBxV70qLMgVYJ3SkzvtE+r15yzR2WX84wyDNhALeJWBBQlgewxXONg9TzfGpfh//WtWe12ScvVTYWdgpsLjGz3Hi4v90alRbO89HxYjV/4qe1iLKsEb9eAz1jRmHBYspV7FFevq4s7/U2nChGPR7MUMtImNDLDxLz1bnR97e3npG6chUn2CmJGITkDTAafTnW/QGl1nHEX45H1leqAERc+jxVNn6arQKppjtv9eB62e/k2ij9H9RPTUieIk0UzNgKgtqBst4PRarx4I4uw7ECmjTO3nm4WEzp/jIL9JfAmB7HW4eJE6GYN1WSFehahlLFUNlkna0uMszNvr9jZfEyZ9nCiHG/tUEYEv5bWEHt5nPmvBVQ6KZos1+ldu5L8/8gsYwfkSWnWaKIowp/QTt5o2wzbo2NFdh+LMAbUxNA+pI6F0g2633m3M6eM4ZxiiYqTMxYPrAklpCL34Kss+UWlPoEDgQJr7joR5NzvquPdg/0XlL/dFR/4xFcDZobxUik2Zzcc5qtRtoCP9zjS2Ipx+nAZBeOrhHwNtBoXbTNS4l49s7efpjBR0vWaOVf1hGFogy/EPsvYD8y7YnvCWHo1xBRCENxfbXmQgqV4k1wgBRzVBplOg9cr4jf2wcCHnA3GKbh5bJ/hSLUm4YYGgz+aYCmepw=='
+  '2248695+rwalpole@users.noreply.github.com':
+    user: 'ec2-user'
+    type: 'ssh-ed25519'
+    key: 'AAAAC3NzaC1lZDI1NTE5AAAAIJ+3Bkl4RrLr2l0KUdjhZtC8uHsr04No1EfF6LY1dbL3'

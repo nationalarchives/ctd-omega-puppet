@@ -2,3 +2,9 @@
 classes:
    - role::puppet_agent
    - role::development_workstation
+
+ssh_authorized_keys:
+  'aford@Ziggy':
+    user: 'ec2-user'
+    type: 'ssh-rsa'
+    key:  'AAAAB3NzaC1yc2EAAAADAQABAAABgQC3jMaqR4sX88pAlpgw/+BTHpav9zpWNi1RevNp9FlwlaU4o0Fe4EobPYfNgroeCuOGwkonjym15SvjwPI0WSZvMY2cr/gN4NWEJG9CwLPkl981PHCfdOYD4ppGv9vOAKMRxTRjYiKnzm815p8uGZJ8j/cRo2z6/FaJqs2SVtiDKiKtHwVY151t1+YgMDmTl1/yrKyrmywzEQ3cEuccpV+JyXeQcFQS0XyX3P6sAFqECXojt6DWIJCH5vcLdArcWrSpX6/d0qFi5/JY1VAHSYK2ZRKaUPzNSlsf2B3JKsDFBYdht9quYY3gUvRuIFIDp5Z/i2SUP3oBfJrat9aJcQXagVJsBRaJ9WKNaY2iX7Z4pH1H0G8GXdkjvsoDXnzIViz2KDILoy/EMab6OhWOkfLtJZtE8IRJq3l2qYL3P4ngJAL/8N6mWW/hJPXuf4oZ20IweNfc9O4uDsMXAalAgRjW5twYLfHFTj65TLcj36VWY4f2KOpcLgsNPtAeKg1Yxc8='
