@@ -1,0 +1,10 @@
+---
+classes:
+   - swap_file
+   - role::puppet_agent
+   - role::openssl_certified
+   - role::web_application_server
+
+swap_file::files:
+  'default':
+    ensure: 'present'
