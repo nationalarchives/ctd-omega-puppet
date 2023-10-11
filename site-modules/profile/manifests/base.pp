@@ -3,6 +3,7 @@ class profile::base {
   include profile::epel
   include profile::ssh_server
   include profile::gb_locale
+  include profile::openssl
 
   # schedule security updates
   class { 'yum_cron':

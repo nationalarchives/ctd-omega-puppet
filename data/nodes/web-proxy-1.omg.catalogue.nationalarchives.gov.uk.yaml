@@ -1,0 +1,63 @@
+---
+classes:
+   - swap_file
+   - role::puppet_agent
+   - role::openssl_certified
+   - role::web_server
+
+swap_file::files:
+  'default':
+    ensure: 'present'
+
+nginx::nginx_upstreams:
+  'omg_editorial_web_app':
+    ensure: present
+    members:
+      'web-app-1:9443':
+        server: 'web-app-1.omg.catalogue.nationalarchives.gov.uk'
+        port: 9443
+
+custom_openssl::dhparam:
+  path: '/etc/ssl/nginx/ssl-dhparams.pem'
+  size: 2048
+
+custom_openssl::certificates:
+  x509_certs:
+    'edit.omg.catalogue.nationalarchives.gov.uk/cert.pem':
+      ensure: 'present'
+      base_dir: '/etc/ssl/nginx'
+      commonname: 'edit.omg.catalogue.nationalarchives.gov.uk'
+      country: 'GB'
+      organization: 'The National Archives'
+      locality: 'Kew'
+      state: 'Greater London'
+      unit: 'Catalogue'
+      email: 'cataloguingtaxonomyanddata@nationalarchives.gov.uk'
+      key: '/etc/ssl/nginx/edit.omg.catalogue.nationalarchives.gov.uk/privkey.pem'
+      crt: '/etc/ssl/nginx/edit.omg.catalogue.nationalarchives.gov.uk/cert.pem'
+      days: 365
+      force: false
+
+nginx::nginx_servers:
+  'edit.omg.catalogue.nationalarchives.gov.uk':
+    proxy: 'https://omg_editorial_web_app'
+    ipv6_enable: true
+    ipv6_listen_options: ''
+    ssl: true
+    ssl_cert: false
+    http2: 'on'
+    ssl_redirect: true
+    ssl_cert: '/etc/ssl/nginx/edit.omg.catalogue.nationalarchives.gov.uk/cert.pem'
+    ssl_key: '/etc/ssl/nginx/edit.omg.catalogue.nationalarchives.gov.uk/privkey.pem'
+    ssl_dhparam: '/etc/ssl/nginx/ssl-dhparams.pem'
+  # 'www.omg.catalogue.nationalarchives.gov.uk':
+  #   www_root: '/var/www/www.omg.catalogue.nationalarchives.gov.uk'
+  #   ipv6_enable: true
+  #   ipv6_listen_options: ''
+  #   ssl: true
+  #   ssl_cert: false
+  #   http2: 'on'
+  #   ssl_redirect: true
+  #   ssl_cert: '/etc/ssl/nginx/www.catalogue.nationalarchives.gov.uk/cert.pem'
+  #   ssl_key: '/etc/ssl/nginx/www.catalogue.nationalarchives.gov.uk/privkey.pem'
+  #   ssl_dhparam: '/etc/ssl/nginx/ssl-dhparams.pem'
