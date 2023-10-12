@@ -1,6 +1,4 @@
-class profile::docker (String $pyenv_python_version = '3.12.0', String $pyenv_root = '/home/ec2-user/.pyenv') {
-  require profile::python
-
+class profile::docker {
   package { 'docker':
     ensure => installed,
   }
@@ -24,18 +22,36 @@ class profile::docker (String $pyenv_python_version = '3.12.0', String $pyenv_ro
     ],
   }
 
-  # TODO(AR) not sure which pip3 this will find so just use the explicit pip command below
-  # package { 'docker-compose':
-  #   ensure   => installed,
-  #   provider => 'pip3',
-  #   require  => Package['python3-pip'],
-  # }
+  file { '/home/ec2-user/.docker':
+    ensure => directory,
+    owner  => 'ec2-user',
+    group  => 'ec2-user',
+  }
 
-  exec { 'pip-install-docker-compose':
-    command     => "${pyenv_root}/shims/pip install docker-compose",
-    environment => ["PYENV_ROOT=${pyenv_root}"],
-    unless      => "${pyenv_root}/shims/pip show docker-compose",
-    user        => 'ec2-user',
-    require     => Exec["pyenv-install-python-${pyenv_python_version}"],
+  file { '/home/ec2-user/.docker/cli-plugins':
+    ensure  => directory,
+    owner   => 'ec2-user',
+    group   => 'ec2-user',
+    require => File['/home/ec2-user/.docker'],
+  }
+
+  exec { 'install-docker-compose-plugin':
+    command => 'curl -SL https://github.com/docker/compose/releases/download/v2.20.3/docker-compose-linux-x86_64 -o /home/ec2-user/.docker/cli-plugins/docker-compose',
+    path    => '/usr/bin',
+    user    => 'ec2-user',
+    creates => '/home/ec2-user/.docker/cli-plugins/docker-compose',
+    require => [
+      Package['docker'],
+      File['/home/ec2-user/.docker/cli-plugins'],
+      Package['curl']
+    ],
+  }
+
+  file { '/home/ec2-user/.docker/cli-plugins/docker-compose':
+    ensure    => file,
+    owner     => 'ec2-user',
+    group     => 'ec2-user',
+    mode      => '0750',
+    subscribe => Exec['install-docker-compose-plugin'],
   }
 }
