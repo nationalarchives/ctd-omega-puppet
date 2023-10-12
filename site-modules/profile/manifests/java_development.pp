@@ -49,7 +49,7 @@ class profile::java_development {
     content => 'export JAVA_HOME=/usr/lib/jvm/java',
     owner   => 'root',
     group   => 'root',
-    mode    => '0644',
+    mode    => '0755',
     require => File['/usr/lib/jvm/java'],
   }
 
