@@ -1,7 +1,8 @@
 class profile::openssl {
-  # ensure OpenSSL is up to date
+  # ensure OpenSSL 1.1 is installed and is up to date
   class { 'openssl':
     package_ensure         => latest,
+    package_name           => 'openssl11',
     ca_certificates_ensure => latest,
   }
 
