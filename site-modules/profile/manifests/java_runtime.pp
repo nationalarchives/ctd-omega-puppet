@@ -4,7 +4,7 @@ class profile::java_runtime {
   }
 
   exec { 'java-11-as-default':
-    command => '/usr/sbin/alternatives --set java /usr/lib/jvm/java-11-amazon-corretto.x86_64/bin/java',
+    command => "/usr/sbin/alternatives --set java /usr/lib/jvm/java-11-amazon-corretto.${$facts['os']['hardware']}/bin/java",
     user    => 'root',
     require => Package['java-11-amazon-corretto'],
   }
