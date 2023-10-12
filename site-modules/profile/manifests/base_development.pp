@@ -1,4 +1,5 @@
 class profile::base_development {
+  include profile::zshell
   include yum
 
   $github_cli_version = '2.34.0'
