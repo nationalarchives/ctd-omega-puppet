@@ -33,4 +33,7 @@ class role::development_workstation {
 
   # Omega code repositories
   include profile::omega_code_repositories
+
+  # Utilities
+  include profile::awscurl
 }
