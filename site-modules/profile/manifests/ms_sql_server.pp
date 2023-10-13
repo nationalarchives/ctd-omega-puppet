@@ -1,4 +1,4 @@
-class profile::ms_sql_server {
+class profile::ms_sql_server (String $sa_password) {
   include profile::firewall
   include yum
 

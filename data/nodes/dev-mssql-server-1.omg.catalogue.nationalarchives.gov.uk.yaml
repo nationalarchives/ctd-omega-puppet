@@ -2,3 +2,5 @@
 classes:
    - role::puppet_agent
    - role::ms_sql_server
+
+profile::ms_sql_server::sa_password: "%{lookup('dev_mssql_server_1::sa::password')}"

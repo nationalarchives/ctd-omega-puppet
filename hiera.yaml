@@ -6,6 +6,17 @@ defaults:
   data_hash: yaml_data
 
 hierarchy:
+  - name: AWS Secrets Manager
+    lookup_key: hiera_aws_secretsmanager
+    uris:
+      - "secrets/%{::environment}"
+    options:
+      region: eu-west-2
+      statsd: false
+      retries:
+        retry_mode: adaptive
+        max_attempts: 5
+
   - name: "Per-node data"
     path: "nodes/%{trusted.certname}.yaml"    # File path, relative to datadir.
   

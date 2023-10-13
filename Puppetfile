@@ -31,4 +31,7 @@ mod 'swap_file',
 mod 'vcsrepo',
     :git    => 'https://github.com/adamretter/puppetlabs-vcsrepo',
     :branch => 'hotfix/stash-pop'
-    
+mod 'hiera_aws_secretsmanager',
+    :git    => 'https://github.com/krux/hiera-aws-secretsmanager',
+    :branch => 'master'
+    # :tag => 'v0.1.2'
