@@ -75,7 +75,7 @@ class profile::java_development {
     content => "export MAVEN_HOME=/opt/maven; export PATH=\"\${PATH}:/opt/maven/bin\"",
     owner   => 'root',
     group   => 'root',
-    mode    => '0644',
+    mode    => '0755',
     require => File['/opt/maven'],
   }
 }

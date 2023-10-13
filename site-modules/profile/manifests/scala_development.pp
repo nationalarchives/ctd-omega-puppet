@@ -30,7 +30,7 @@ class profile::scala_development {
     content => "export SBT_HOME=/opt/sbt; export PATH=\"\${PATH}:/opt/sbt/bin\"",
     owner   => 'root',
     group   => 'root',
-    mode    => '0644',
+    mode    => '0755',
     require => File['/opt/sbt'],
   }
 }
