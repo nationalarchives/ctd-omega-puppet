@@ -27,6 +27,7 @@ class role::development_workstation {
   include profile::diffmerge_x
   include profile::slack_x
   include profile::sublime_x
+  include profile::vscode_x
 
   # Docker
   include profile::docker
