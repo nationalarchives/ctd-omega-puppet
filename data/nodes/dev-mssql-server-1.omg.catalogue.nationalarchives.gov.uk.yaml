@@ -1,0 +1,4 @@
+---
+classes:
+   - role::puppet_agent
+   - role::ms_sql_server
