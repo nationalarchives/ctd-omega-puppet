@@ -21,4 +21,12 @@ class profile::base_development {
     source  => "https://github.com/cli/cli/releases/download/v${github_cli_version}/gh_${github_cli_version}_linux_amd64.rpm",
     require => Package['git'],
   }
+
+  package { 'uuid':
+    ensure => installed,
+  }
+
+  package { 'jq':
+    ensure => installed,
+  }
 }
