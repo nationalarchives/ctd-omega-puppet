@@ -1,4 +1,5 @@
 class profile::base_development {
+  include profile::base
   include profile::zshell
   include yum
 
@@ -28,5 +29,14 @@ class profile::base_development {
 
   package { 'jq':
     ensure => installed,
+  }
+
+  # Omega AWS Scripts
+  exec { 'install-omg-aws-scripts':
+    command => "curl -L https://github.com/nationalarchives/ctd-omega-aws-scripts/archive/refs/tags/1.0.0.tar.gz | tar zxv -C /home/ec2-user/bin --strip-components=1 --wildcards --no-anchored '*.sh'",
+    path    => '/usr/bin/',
+    user    => 'ec2-user',
+    creates => '/home/ec2-user/bin/omg-assume-aws-role.sh',
+    require => File['/home/ec2-user/bin'],
   }
 }
