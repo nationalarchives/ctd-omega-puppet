@@ -1,18 +1,7 @@
 class profile::java_development {
-  $maven_version = '3.8.5'
-
-  package { 'java-11-amazon-corretto':
-    ensure => installed,
-  }
-
-  exec { 'enable-corretto-8':
-    command => 'amazon-linux-extras enable corretto8',
-    path    => '/usr/bin',
-    require => Package['java-11-amazon-corretto'],
-  }
-  -> package { 'java-1.8.0-amazon-corretto-devel':
-    ensure => installed,
-  }
+  include profile::java_8
+  include profile::java_11
+  include profile::maven
 
   exec { 'java-11-as-default':
     command => "/usr/sbin/alternatives --set java /usr/lib/jvm/java-11-amazon-corretto.${$facts['os']['hardware']}/bin/java",
@@ -51,31 +40,5 @@ class profile::java_development {
     group   => 'root',
     mode    => '0755',
     require => File['/usr/lib/jvm/java'],
-  }
-
-  # install Maven
-  exec { 'install-maven':
-    command => "curl -L https://archive.apache.org/dist/maven/maven-3/${maven_version}/binaries/apache-maven-${maven_version}-bin.tar.gz | tar zxv -C /opt",
-    path    => '/usr/bin',
-    user    => 'root',
-    creates => "/opt/apache-maven-${maven_version}",
-    require => Package['curl'],
-  }
-
-  file { '/opt/maven':
-    ensure  => link,
-    target  => "/opt/apache-maven-${maven_version}",
-    replace => false,
-    owner   => 'root',
-    group   => 'root',
-    require => Exec['install-maven'],
-  }
-
-  file { '/etc/profile.d/append-maven-path.sh':
-    content => "export MAVEN_HOME=/opt/maven; export PATH=\"\${PATH}:/opt/maven/bin\"",
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    require => File['/opt/maven'],
   }
 }

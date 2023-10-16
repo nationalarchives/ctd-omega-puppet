@@ -1,7 +1,5 @@
 class profile::java_runtime {
-  package { 'java-11-amazon-corretto':
-    ensure => installed,
-  }
+  include profile::java_11
 
   exec { 'java-11-as-default':
     command => "/usr/sbin/alternatives --set java /usr/lib/jvm/java-11-amazon-corretto.${$facts['os']['hardware']}/bin/java",
