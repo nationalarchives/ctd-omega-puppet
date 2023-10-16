@@ -36,7 +36,7 @@ class profile::base {
   }
 
   # install additional packages
-  $additional_packages = ['curl', 'htop', 'screen']
+  $additional_packages = ['curl', 'htop', 'screen', 'zstd']
   package { $additional_packages:
     ensure => 'installed',
   }
