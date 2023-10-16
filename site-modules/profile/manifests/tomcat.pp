@@ -1,4 +1,4 @@
-class profile::tomcat (String $tomcat_version = '9.0.82') {
+class profile::tomcat (String $tomcat_version = '8.5.95') {
   include profile::java_11
 
   group { 'tomcat':
@@ -19,7 +19,7 @@ class profile::tomcat (String $tomcat_version = '9.0.82') {
   }
 
   exec { 'install-tomcat':
-    command => "curl -L https://dlcdn.apache.org/tomcat/tomcat-9/v${tomcat_version}/bin/apache-tomcat-${tomcat_version}.tar.gz | tar zxv -C /opt",
+    command => "curl -L https://dlcdn.apache.org/tomcat/tomcat-8/v${tomcat_version}/bin/apache-tomcat-${tomcat_version}.tar.gz | tar zxv -C /opt",
     path    => '/usr/bin',
     user    => 'root',
     creates => "/opt/apache-tomcat-${tomcat_version}/bin/catalina.sh",
