@@ -1,4 +1,4 @@
-class profile::rdf4j (String $rdf4j_version = '4.3.7') {
+class profile::rdf4j (String $rdf4j_version = '4.2.3') {
   include profile::tomcat
 
   exec { 'download-rdf4j-sdk':
