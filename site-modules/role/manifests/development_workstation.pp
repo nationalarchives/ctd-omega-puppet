@@ -37,4 +37,7 @@ class role::development_workstation {
 
   # Utilities
   include profile::awscurl
+
+  # RDF4j Server repositories
+  include profile::rdf4j_neptune_repository
 }
