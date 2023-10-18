@@ -1,2 +1,4 @@
 ---
 letsencrypt::email: 'cataloguingtaxonomyanddata@nationalarchives.gov.uk'
+default::pyenv_root: '/home/ec2-user/.pyenv'
+default::pyenv_user: 'ec2-user'

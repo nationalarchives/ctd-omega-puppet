@@ -2,3 +2,13 @@
 classes:
    - role::puppet_agent
    - role::development_workstation
+
+profile::pyenv::pyenv_root: "%{lookup('default::pyenv_root')}"
+profile::pyenv::user: "%{lookup('default::pyenv_user')}"
+
+profile::pyenv_install_python::version::pyenv_root: "%{lookup('default::pyenv_root')}"
+profile::pyenv_install_python::version::user: "%{lookup('default::pyenv_user')}"
+profile::pyenv_install_python::version:
+   - '3.10.0'
+   - '3.12.0'
+profile::pyenv_install_python::default_version: '3.12.0'
