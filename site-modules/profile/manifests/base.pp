@@ -35,6 +35,15 @@ class profile::base {
     require => File['/home/ec2-user'],
   }
 
+  file { '/home/ec2-user/.config':
+    ensure  => directory,
+    replace => false,
+    owner   => 'ec2-user',
+    group   => 'ec2-user',
+    mode    => '0700',
+    require => File['/home/ec2-user'],
+  }
+
   # install additional packages
   $additional_packages = ['curl', 'htop', 'screen', 'zstd']
   package { $additional_packages:

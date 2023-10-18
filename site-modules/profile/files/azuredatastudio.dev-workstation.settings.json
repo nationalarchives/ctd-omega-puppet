@@ -1,0 +1,126 @@
+{
+    "datasource.connectionGroups": [
+        {
+            "name": "ROOT",
+            "id": "C777F06B-202E-4480-B475-FA416154D458"
+        },
+        {
+            "name": "development",
+            "id": "9b5ef85f-899f-4f5f-add1-ee1b37155ba5",
+            "parentId": "C777F06B-202E-4480-B475-FA416154D458",
+            "color": "#515151",
+            "description": ""
+        }
+    ],
+    "datasource.connections": [
+        {
+            "options": {
+                "connectionName": "sa@*:dev-mssql-server-1",
+                "server": "dev-mssql-server-1.omg.catalogue.nationalarchives.gov.uk",
+                "database": "",
+                "authenticationType": "SqlLogin",
+                "user": "sa",
+                "password": "",
+                "applicationName": "azdata",
+                "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+                "databaseDisplayName": ""
+            },
+            "groupId": "9b5ef85f-899f-4f5f-add1-ee1b37155ba5",
+            "providerName": "MSSQL",
+            "savePassword": true,
+            "id": "0f56e5cf-f588-4982-a5b8-b60124c80ce0"
+        },
+        {
+            "options": {
+                "connectionName": "kettle@ILDB:dev-mssql-server-1",
+                "server": "dev-mssql-server-1.omg.catalogue.nationalarchives.gov.uk",
+                "database": "ILDB",
+                "authenticationType": "SqlLogin",
+                "user": "kettle",
+                "password": "",
+                "applicationName": "azdata",
+                "originalDatabase": "ILDB",
+                "groupId": "C777F06B-202E-4480-B475-FA416154D458",
+                "databaseDisplayName": "ILDB"
+            },
+            "groupId": "9b5ef85f-899f-4f5f-add1-ee1b37155ba5",
+            "providerName": "MSSQL",
+            "savePassword": true,
+            "id": "9cc0150e-6c02-40d9-8dc5-bd9372b60ac7"
+        },
+        {
+            "options": {
+                "connectionName": "kettle@OMEGA_ETL:dev-mssql-server-1",
+                "server": "dev-mssql-server-1.omg.catalogue.nationalarchives.gov.uk",
+                "database": "OMEGA_ETL",
+                "authenticationType": "SqlLogin",
+                "user": "kettle",
+                "password": "",
+                "applicationName": "azdata",
+                "originalDatabase": "OMEGA_ETL",
+                "groupId": "9b5ef85f-899f-4f5f-add1-ee1b37155ba5",
+                "databaseDisplayName": "OMEGA_ETL"
+            },
+            "groupId": "9b5ef85f-899f-4f5f-add1-ee1b37155ba5",
+            "providerName": "MSSQL",
+            "savePassword": false,
+            "id": "29911833-6588-461c-99e4-8e775e0f3caa"
+        },
+        {
+            "options": {
+                "connectionName": "pentaho_user@quartz:dev-mssql-server-1",
+                "server": "dev-mssql-server-1.omg.catalogue.nationalarchives.gov.uk",
+                "database": "quartz",
+                "authenticationType": "SqlLogin",
+                "user": "pentaho_user",
+                "password": "",
+                "applicationName": "azdata",
+                "originalDatabase": "quartz",
+                "groupId": "9b5ef85f-899f-4f5f-add1-ee1b37155ba5",
+                "databaseDisplayName": "quartz"
+            },
+            "groupId": "9b5ef85f-899f-4f5f-add1-ee1b37155ba5",
+            "providerName": "MSSQL",
+            "savePassword": false,
+            "id": "e84a3abc-5a9e-4279-8e06-8ac62c6dc893"
+        },
+        {
+            "options": {
+                "connectionName": "hibuser@hibernate:dev-mssql-server-1",
+                "server": "dev-mssql-server-1.omg.catalogue.nationalarchives.gov.uk",
+                "database": "hibernate",
+                "authenticationType": "SqlLogin",
+                "user": "hibuser",
+                "password": "",
+                "applicationName": "azdata",
+                "originalDatabase": "hibernate",
+                "groupId": "9b5ef85f-899f-4f5f-add1-ee1b37155ba5",
+                "databaseDisplayName": "hibernate"
+            },
+            "groupId": "9b5ef85f-899f-4f5f-add1-ee1b37155ba5",
+            "providerName": "MSSQL",
+            "savePassword": false,
+            "id": "7c9d5528-e540-4e9a-ad50-517a8af47216"
+        },
+        {
+            "options": {
+                "connectionName": "jcr_user@jackrabbit:dev-mssql-server-1",
+                "server": "dev-mssql-server-1.omg.catalogue.nationalarchives.gov.uk",
+                "database": "jackrabbit",
+                "authenticationType": "SqlLogin",
+                "user": "jcr_user",
+                "password": "",
+                "applicationName": "azdata",
+                "originalDatabase": "jackrabbit",
+                "groupId": "9b5ef85f-899f-4f5f-add1-ee1b37155ba5",
+                "databaseDisplayName": "jackrabbit"
+            },
+            "groupId": "9b5ef85f-899f-4f5f-add1-ee1b37155ba5",
+            "providerName": "MSSQL",
+            "savePassword": false,
+            "id": "151263ee-0101-4b40-ad19-0dc61856847b"
+        }
+    ],
+    "window.zoomLevel": 2,
+    "workbench.enablePreviewFeatures": true
+}

@@ -40,4 +40,7 @@ class role::development_workstation {
 
   # RDF4j Server repositories
   include profile::rdf4j_neptune_repository
+
+  # SQL Server database configurations for Azure Data Studio
+  include profile::azuredatastudio_settings
 }
