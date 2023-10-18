@@ -1,5 +1,6 @@
 class profile::java_x_development {
   include profile::x_desktop
+  include yum
 
   $intellij_idea_version = '2023.2.1'
   $eclipse_version = '2023-06'
