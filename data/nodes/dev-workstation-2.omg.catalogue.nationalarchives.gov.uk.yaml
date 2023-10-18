@@ -15,6 +15,11 @@ profile::awscurl::pyenv_python_version: "%{lookup('default::python_version')}"
 profile::awscurl::pyenv_root: "%{lookup('default::pyenv_root')}"
 profile::awscurl::user: "%{lookup('default::user')}"
 
+profile::aws_graph_notebook_x::pyenv_python_version: '3.10.0'
+profile::aws_graph_notebook_x::pyenv_root: "%{lookup('default::pyenv_root')}"
+profile::aws_graph_notebook_x::user: "%{lookup('default::user')}"
+
+profile::aws_graph_notebook_neptune_config::user: "%{lookup('default::user')}"
 
 ssh_authorized_keys:
   'robkwalpole@gmail.com':

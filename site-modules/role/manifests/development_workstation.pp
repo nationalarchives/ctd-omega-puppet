@@ -16,6 +16,7 @@ class role::development_workstation {
   # X development tools
   include profile::x_desktop
   include profile::java_x_development
+  include profile::rdf_x_development
   include profile::sql_x_development
   include profile::xml_x_development
   
@@ -41,6 +42,9 @@ class role::development_workstation {
 
   # RDF4j Server repositories
   include profile::rdf4j_neptune_repository
+
+  # AWS Graph Notebook config
+  include profile::aws_graph_notebook_neptune_config
 
   # SQL Server database configurations for Azure Data Studio
   include profile::azuredatastudio_settings
