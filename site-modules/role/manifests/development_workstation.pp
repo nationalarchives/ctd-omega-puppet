@@ -25,6 +25,7 @@ class role::development_workstation {
   
   # X misc tools
   include profile::diffmerge_x
+  include profile::jupyter_lab_x
   include profile::slack_x
   include profile::sublime_x
   include profile::vscode_x
