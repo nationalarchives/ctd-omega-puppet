@@ -178,7 +178,7 @@ class profile::omega_code_repositories {
     {
       'path'     => '/home/ec2-user/code/ctd-omega-interview-tech-test-java ',
       'source'   => {
-        'origin'   => 'https://github.com/nationalarchives/ctd-omega-interview-tech-test-java .git',
+        'origin'   => 'https://github.com/nationalarchives/ctd-omega-interview-tech-test-java.git',
       },
       'revision' => 'main',
       'clone'    => false,  # TODO(AR) currently a private repo, remove this when it becomes public repo
@@ -186,7 +186,7 @@ class profile::omega_code_repositories {
     {
       'path'     => '/home/ec2-user/code/ctd-omega-interview-tech-test-scala ',
       'source'   => {
-        'origin'   => 'https://github.com/nationalarchives/ctd-omega-interview-tech-test-scala .git',
+        'origin'   => 'https://github.com/nationalarchives/ctd-omega-interview-tech-test-scala.git',
       },
       'revision' => 'main',
       'clone'    => false,  # TODO(AR) currently a private repo, remove this when it becomes public repo
