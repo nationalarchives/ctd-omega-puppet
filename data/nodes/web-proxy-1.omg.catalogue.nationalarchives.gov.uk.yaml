@@ -23,18 +23,18 @@ custom_openssl::dhparam:
 
 custom_openssl::certificates:
   x509_certs:
-    'edit.omg.catalogue.nationalarchives.gov.uk/cert.pem':
+    'cms.omg.catalogue.nationalarchives.gov.uk/cert.pem':
       ensure: 'present'
       base_dir: '/etc/ssl/nginx'
-      commonname: 'edit.omg.catalogue.nationalarchives.gov.uk'
+      commonname: 'cms.omg.catalogue.nationalarchives.gov.uk'
       country: 'GB'
       organization: 'The National Archives'
       locality: 'Kew'
       state: 'Greater London'
       unit: 'Catalogue'
       email: 'cataloguingtaxonomyanddata@nationalarchives.gov.uk'
-      key: '/etc/ssl/nginx/edit.omg.catalogue.nationalarchives.gov.uk/privkey.pem'
-      crt: '/etc/ssl/nginx/edit.omg.catalogue.nationalarchives.gov.uk/cert.pem'
+      key: '/etc/ssl/nginx/cms.omg.catalogue.nationalarchives.gov.uk/privkey.pem'
+      crt: '/etc/ssl/nginx/cms.omg.catalogue.nationalarchives.gov.uk/cert.pem'
       days: 365
       force: false
     'www.omg.catalogue.nationalarchives.gov.uk/cert.pem':
@@ -53,7 +53,7 @@ custom_openssl::certificates:
       force: false
 
 nginx::nginx_servers:
-  'edit.omg.catalogue.nationalarchives.gov.uk':
+  'cms.omg.catalogue.nationalarchives.gov.uk':
     proxy: 'https://omg_editorial_web_app'
     ipv6_enable: true
     ipv6_listen_options: ''
@@ -61,8 +61,8 @@ nginx::nginx_servers:
     ssl_cert: false
     http2: 'on'
     ssl_redirect: true
-    ssl_cert: '/etc/ssl/nginx/edit.omg.catalogue.nationalarchives.gov.uk/cert.pem'
-    ssl_key: '/etc/ssl/nginx/edit.omg.catalogue.nationalarchives.gov.uk/privkey.pem'
+    ssl_cert: '/etc/ssl/nginx/cms.omg.catalogue.nationalarchives.gov.uk/cert.pem'
+    ssl_key: '/etc/ssl/nginx/cms.omg.catalogue.nationalarchives.gov.uk/privkey.pem'
     ssl_dhparam: '/etc/ssl/nginx/ssl-dhparams.pem'
   'www.omg.catalogue.nationalarchives.gov.uk':
     www_root: '/var/www/www.omg.catalogue.nationalarchives.gov.uk'
