@@ -45,7 +45,7 @@ class profile::base {
   }
 
   # install additional packages
-  $additional_packages = ['curl', 'htop', 'screen', 'zstd']
+  $additional_packages = ['curl', 'htop', 'screen', 'zstd', 'uuid']
   package { $additional_packages:
     ensure => 'installed',
   }
