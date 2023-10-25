@@ -8,3 +8,9 @@ classes:
 swap_file::files:
   'default':
     ensure: 'present'
+
+ssh_authorized_keys:
+  'ec2-user@dev-workstation-2.omg.catalogue.nationalarchives.gov.uk':
+    user: 'ec2-user'
+    type: 'ssh-rsa'
+    key:  'AAAAB3NzaC1yc2EAAAADAQABAAABAQDGhQ97S/B0oSNKPq1ePTLe4+DjjDUImCKyQ6SFutyVcb1J5AQXtTxbS92kgNI6nzdf8WZS7V4JXUPU24eHyMeWn9C5mHBCXnPJWmHVGi1BnWEJjy0SchXGB7QBa+Dte0mXVE+QjoiocSUc/1LfiuLz3875zR89k2FPPEQK2HQ6+rmiM0gVdFYgz+eLYsUDqy6qd+ow1VvO9RTc86WTyLf4cjtsPOctjMYLPsvet5pxvId5CZdGzM6OSTo8SMVD7tupatnFOeWGLW7VLlk2hUM7YwwISCzLSRDb5JTdXwLkFi9pd4t8sVkk2hCoEJFExgkEUx14h4pkecKXo1Du3GJx'
