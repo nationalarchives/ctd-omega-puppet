@@ -4,6 +4,7 @@ classes:
    - role::puppet_agent
    - role::openssl_certified
    - role::web_server
+   - role::www_omg_host
 
 swap_file::files:
   'default':
