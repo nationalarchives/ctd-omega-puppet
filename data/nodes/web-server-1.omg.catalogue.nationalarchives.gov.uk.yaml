@@ -1,0 +1,30 @@
+---
+classes:
+   - swap_file
+   - role::puppet_agent
+   - role::letsencrypt_certified
+   - role::web_server
+
+swap_file::files:
+  'default':
+    ensure: 'present'
+
+letsencrypt::certificates:
+  'www.catalogue.nationalarchives.gov.uk':
+    domains:
+      - 'www.catalogue.nationalarchives.gov.uk'
+    # plugin: nginx # NOTE(AR) disabled due to bug: https://github.com/voxpupuli/puppet-letsencrypt/issues/331
+    manage_cron: false
+
+nginx::nginx_servers:
+  'www.catalogue.nationalarchives.gov.uk':
+    www_root: '/var/www/www.catalogue.nationalarchives.gov.uk'
+    ipv6_enable: true
+    ipv6_listen_options: ''
+    ssl: true
+    ssl_cert: false
+    http2: 'on'
+    ssl_redirect: true
+    ssl_cert: '/etc/letsencrypt/live/www.catalogue.nationalarchives.gov.uk/cert.pem'
+    ssl_key: '/etc/letsencrypt/live/www.catalogue.nationalarchives.gov.uk/privkey.pem'
+    ssl_dhparam: '/usr/lib/python2.7/site-packages/certbot/ssl-dhparams.pem'
